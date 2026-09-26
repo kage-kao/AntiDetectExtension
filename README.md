@@ -1,6 +1,6 @@
 <p align="center">
   <picture>
-    <img src="https://capsule-render.vercel.app/api?type=venom&color=0:1a1a1a,100:4f4f4f&height=200&text=🚫AntiDetectExtension&fontSize=60&fontColor=ff0000&animation=false" style="border: none; box-shadow: none; outline: none;">
+    <img src="https://capsule-render.vercel.app/api?type=venom&color=0:1a1a1a,100:4f4f4f&height=200&text=AntiDetectExtension&fontSize=60&fontColor=ff0000&animation=false" style="border: none; box-shadow: none; outline: none;">
   </picture>
 </p>
 

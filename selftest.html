@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>AntiDetectExtension — Self-test</title>
+  <link rel="stylesheet" href="options.css">
+  <style>
+    .kv { display:grid; grid-template-columns: 220px 1fr; gap:6px 14px; font-size:13px; }
+    .kv .k { opacity:.7; }
+    .kv .v { font-family: ui-monospace, Menlo, Consolas, monospace; word-break: break-all; }
+    .badge { display:inline-block; padding:2px 8px; border-radius:999px; font-size:12px; }
+    .on { background:#123f24; color:#4ade80; }
+    .off { background:#3f1212; color:#f87171; }
+    .grid2 { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+    .links a { display:inline-block; margin:4px 8px 4px 0; color:#60a5fa; }
+    .pill { display:inline-block; margin:3px; padding:2px 8px; border-radius:6px; background:#1f2937; font-size:12px; }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="top">
+      <div class="brand">
+        <img src="icons/icon128.png" alt="" class="logo">
+        <div>
+          <h1 data-testid="selftest-title">Fingerprint self-test</h1>
+          <p class="sub" id="modeLine">—</p>
+        </div>
+      </div>
+    </header>
+
+    <section class="card">
+      <h2 data-i18n="identity">Active identity (expected spoofed values)</h2>
+      <div class="kv" id="legend" data-testid="legend-table"></div>
+    </section>
+
+    <section class="card">
+      <h2 data-i18n="protection_groups">Protection groups</h2>
+      <div id="groups" data-testid="groups-status"></div>
+    </section>
+
+    <section class="card">
+      <h2 data-i18n="analytics">Analytics / session-replay neutralized</h2>
+      <div id="analytics" data-testid="analytics-list"></div>
+    </section>
+
+    <section class="card">
+      <h2>Verify externally</h2>
+      <p class="hint">Открой на реальном сайте и сравни значения. / Open on a live site and compare.</p>
+      <div class="links">
+        <a href="https://browserleaks.com/canvas" target="_blank" rel="noopener">BrowserLeaks · Canvas</a>
+        <a href="https://browserleaks.com/webgl" target="_blank" rel="noopener">BrowserLeaks · WebGL</a>
+        <a href="https://browserleaks.com/webrtc" target="_blank" rel="noopener">BrowserLeaks · WebRTC</a>
+        <a href="https://coveryourtracks.eff.org/" target="_blank" rel="noopener">EFF Cover Your Tracks</a>
+        <a href="https://fingerprint.com/products/browser-fingerprinting/" target="_blank" rel="noopener">FingerprintJS demo</a>
+        <a href="https://abrahamjuliot.github.io/creepjs/" target="_blank" rel="noopener">CreepJS</a>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>This extension page (NOT spoofed — baseline)</h2>
+      <p class="hint">Значения ниже — реальные, т.к. хуки не применяются к страницам расширения. Это база для сравнения.</p>
+      <div class="kv" id="raw" data-testid="raw-table"></div>
+    </section>
+  </div>
+  <script src="common.js"></script>
+  <script src="profiles.js"></script>
+  <script src="i18n.js"></script>
+  <script src="selftest.js"></script>
+</body>
+</html>

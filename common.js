@@ -1,0 +1,206 @@
+// Shared defaults & storage helpers. Plain script: SW (importScripts), popup/options, ISOLATED bridge.
+// Top-level `var`/functions so re-injection into the same world is safe.
+
+var ADE_DEFAULTS = {
+  enabled: true,
+  groups: {
+    canvas: true,
+    webgl: true,
+    audio: true,
+    rects: true,
+    fonts: true,
+    navigator: true,
+    screen: true,
+    uach: true,
+    locale: true,
+    geo: false,
+    timezone: false,
+    webrtc: true,
+    battery: true,
+    media: true,
+    beacon: true,
+    analytics: true,
+    sensors: true,
+    workers: true,
+    stealth: true
+  },
+  // stable = one consistent legend until you press "New identity", per-visit = v1 behaviour
+  mode: "stable",
+  // Auto-rotate the stable legend so returning visits get a fresh fingerprint:
+  // "off" = only manual, "session" = new legend every browser start, "daily" = once/day,
+  // "site" = own legend per site, re-rolled once all tabs of that site are closed.
+  rotateIdentity: "site",
+  identityStamp: 0,
+  activeProfileId: null,
+  profiles: {},
+  blockAds: true,
+  blockTrackers: true,
+  cosmetic: true,
+  forgetSites: true,
+  httpsUpgrade: true,
+  blockCookies3p: true,
+  blockAdTopics: true,
+  gpc: false,
+  cleanUrls: true,
+  ampRedirect: true,
+  userBlockDomains: [],
+  userHideSelectors: [],
+  whitelist: [],
+  lang: "ru"
+};
+
+var ADE_DYNAMIC_RULE_OFFSET = 100000;
+var ADE_HEADER_RULE_ID = 99000;
+
+var ADE_BUILTIN_BYPASS_HOSTS = [
+  "challenges.cloudflare.com",
+  "turnstile.cloudflare.com"
+];
+
+function adeIsBuiltinBypass(host) {
+  if (!host) return false;
+  var h = String(host).replace(/^www\./, "").toLowerCase();
+  return ADE_BUILTIN_BYPASS_HOSTS.some(function (b) { return h === b || h.endsWith("." + b); });
+}
+
+function adeMergeDefaults(stored) {
+  var s = stored || {};
+  var out = JSON.parse(JSON.stringify(ADE_DEFAULTS));
+  Object.keys(out).forEach(function (k) {
+    if (s[k] === undefined) return;
+    if (k === "groups" && typeof s.groups === "object") Object.assign(out.groups, s.groups);
+    else out[k] = s[k];
+  });
+  return out;
+}
+
+function adeGetSettings() {
+  return new Promise(function (resolve) {
+    try {
+      chrome.storage.local.get("settings", function (data) {
+        resolve(adeMergeDefaults(data && data.settings));
+      });
+    } catch (e) {
+      resolve(adeMergeDefaults(null));
+    }
+  });
+}
+
+function adeSetSettings(settings) {
+  return new Promise(function (resolve, reject) {
+    chrome.storage.local.set({ settings: settings }, function () {
+      var err = chrome.runtime.lastError;
+      if (err) reject(new Error(err.message)); else resolve(settings);
+    });
+  });
+}
+
+var adeWriteChain = Promise.resolve();
+function adeUpdateSettings(mutate) {
+  var p = adeWriteChain.then(function () {
+    return adeGetSettings().then(function (s) { mutate(s); return adeSetSettings(s); });
+  });
+  adeWriteChain = p.catch(function () {});
+  return p;
+}
+
+function adeHostFromUrl(url) {
+  try {
+    return new URL(url).hostname.replace(/^www\./, "");
+  } catch (e) {
+    return "";
+  }
+}
+
+function adeIsWhitelisted(settings, host) {
+  if (!host) return false;
+  var h = String(host).replace(/^www\./, "").toLowerCase();
+  return (settings.whitelist || []).some(function (w) {
+    var ww = String(w).replace(/^www\./, "").trim().toLowerCase();
+    if (!ww) return false;
+    return h === ww || h.endsWith("." + ww);
+  });
+}
+
+function adeActiveProfile(settings) {
+  if (settings && settings.profiles && settings.activeProfileId && settings.profiles[settings.activeProfileId]) {
+    return settings.profiles[settings.activeProfileId];
+  }
+  return null;
+}
+
+// Guarantees a usable profile exists. Needs profiles.js loaded (ADE_generateProfile).
+function adeEnsureProfile(settings) {
+  var p = adeActiveProfile(settings);
+  if (p) return p;
+  try {
+    p = ADE_generateProfile("de", "win", (Math.random() * 4294967296) >>> 0);
+  } catch (e) {
+    return null;
+  }
+  settings.profiles = settings.profiles || {};
+  var ids = Object.keys(settings.profiles);
+  if (ids.length >= 5) {
+    delete settings.profiles[ids[0]];
+  }
+  settings.profiles[p.id] = p;
+  settings.activeProfileId = p.id;
+  return p;
+}
+
+// Rotate to a brand-new legend but keep the current country/OS so it still matches the proxy/IP.
+function adeRotateProfile(settings) {
+  var cur = adeActiveProfile(settings);
+  var preset = (cur && cur.preset) || "de";
+  var os = (cur && cur.os) || "win";
+  var p;
+  try {
+    p = ADE_generateProfile(preset, os, (Math.random() * 4294967296) >>> 0);
+  } catch (e) {
+    return null;
+  }
+  settings.profiles = settings.profiles || {};
+  var ids = Object.keys(settings.profiles);
+  if (ids.length >= 5) delete settings.profiles[ids[0]];
+  settings.profiles[p.id] = p;
+  settings.activeProfileId = p.id;
+  settings.identityStamp = Date.now();
+  return p;
+}
+
+// True when an automatic legend rotation is due on browser startup.
+function adeRotationDue(settings) {
+  var mode = settings.rotateIdentity || "off";
+  if (mode === "session") return true;
+  if (mode === "daily") return (Date.now() - (settings.identityStamp || 0)) >= 86400000;
+  return false;
+}
+
+// Registrable-domain approximation: a.b.example.com -> example.com, shop.example.co.uk -> example.co.uk.
+var ADE_SLD_SUFFIXES = ["co", "com", "net", "org", "gov", "edu", "ac", "or", "ne", "go", "gv", "msk", "spb"];
+function adeSiteKey(host) {
+  var h = String(host || "").toLowerCase().replace(/^www\./, "").replace(/\.$/, "");
+  if (!h || h.indexOf(".") < 0 || /^[\d.]+$/.test(h) || h.indexOf(":") >= 0) return h;
+  var l = h.split(".");
+  if (l.length <= 2) return h;
+  var n = (l[l.length - 1].length === 2 && ADE_SLD_SUFFIXES.indexOf(l[l.length - 2]) >= 0) ? 3 : 2;
+  return l.slice(-n).join(".");
+}
+
+// Per-site legend: same country/OS/UA as the base legend (so headers still match), fresh hardware & noise seed.
+var ADE_SITE_FIELDS = ["cores", "ram", "touch", "gpuVendor", "gpuRenderer", "screenW", "screenH", "dpr",
+  "sampleRate", "battery", "platformVersion"];
+function adeSiteLegend(base) {
+  var hw;
+  try { hw = ADE_generateProfile(base.preset, base.os, (Math.random() * 4294967296) >>> 0); } catch (e) { return null; }
+  var out = JSON.parse(JSON.stringify(base));
+  ADE_SITE_FIELDS.forEach(function (k) { out[k] = hw[k]; });
+  out.id = hw.id;
+  out.seed = hw.seed;
+  out.base = base.id;
+  return out;
+}
+
+if (typeof module !== "undefined") {
+  module.exports = { ADE_DEFAULTS: ADE_DEFAULTS, adeMergeDefaults: adeMergeDefaults, adeHostFromUrl: adeHostFromUrl, adeIsWhitelisted: adeIsWhitelisted, adeIsBuiltinBypass: adeIsBuiltinBypass, adeRotateProfile: adeRotateProfile, adeRotationDue: adeRotationDue, adeSiteKey: adeSiteKey, adeSiteLegend: adeSiteLegend };
+}

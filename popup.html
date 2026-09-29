@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="wrap">
+    <header class="hdr">
+      <div class="brand">
+        <img src="icons/icon48.png" alt="" class="logo">
+        <div>
+          <div class="brand-title" data-i18n="title">AntiDetectExtension</div>
+          <div class="brand-host" id="host" data-testid="current-host">—</div>
+        </div>
+      </div>
+      <div class="hdr-right">
+        <button id="burn" class="fire-btn" type="button" data-testid="burn-all" aria-label="Burn all data">
+          <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+            <path fill="currentColor" d="M12 23c4.14 0 7.5-3.14 7.5-7 0-2.3-1.1-4.4-2.4-6.1-.3.9-.9 1.7-1.8 2.1.4-1.9.1-4.3-1.6-6.4C13 2.6 10.9 1.3 9 1c.6 1.7.3 3.5-.8 4.9-1 1.3-2.6 2.3-3.7 4C3.5 11.1 3 12.9 3 14.6 3 19 6.86 23 12 23Zm0-3c-1.66 0-3-1.28-3-2.9 0-1 .5-1.9 1.3-2.8.1.6.5 1.1 1.1 1.4-.2-1.2.3-2.5 1.3-3.3.5 1 1.4 1.6 1.9 2.6.3.6.4 1.2.4 1.8 0 1.62-1.34 3.2-3 3.2Z"/>
+          </svg>
+        </button>
+        <select id="lang" class="lang" data-testid="lang-select">
+          <option value="ru">RU</option>
+          <option value="en">EN</option>
+        </select>
+      </div>
+    </header>
+
+    <div class="stats">
+      <div class="stat" data-testid="stat-blocked">
+        <div class="stat-num" id="statBlocked">0</div>
+        <div class="stat-lbl" data-i18n="stats_blocked">Заблокировано</div>
+      </div>
+      <div class="stat" data-testid="stat-spoof">
+        <div class="stat-num" id="statSpoof">0</div>
+        <div class="stat-lbl" data-i18n="stats_spoof">Срабатываний</div>
+      </div>
+    </div>
+
+    <div class="row master">
+      <span data-i18n="master">Защита включена</span>
+      <label class="switch"><input type="checkbox" id="enabled" data-testid="toggle-enabled"><span class="slider"></span></label>
+    </div>
+
+    <div class="dependent">
+      <div class="section-title" data-i18n="identity">Образ</div>
+      <div class="profile-card" data-testid="profile-card">
+        <div class="profile-name" id="profileName" data-testid="profile-name">—</div>
+        <div class="profile-meta" id="profileMeta" data-testid="profile-meta">—</div>
+        <div class="profile-actions">
+          <select id="mode" class="mode" data-testid="mode-select">
+            <option value="stable" data-i18n="profile_stable">Стабильный образ</option>
+            <option value="per-visit" data-i18n="profile_pervisit">Случайный каждый визит</option>
+          </select>
+          <button id="newIdentity" class="btn small" data-testid="new-identity" data-i18n="new_identity">Новый образ</button>
+        </div>
+        <div class="profile-controls one">
+          <label class="fld"><span data-i18n="rotate_identity">Автосмена образа</span>
+            <select id="rotate" class="mode" data-testid="rotate-select">
+              <option value="site" data-i18n="rotate_site">Новый образ для сайта после закрытия всех его вкладок</option>
+              <option value="off" data-i18n="rotate_off">Не менять автоматически</option>
+              <option value="session" data-i18n="rotate_session">Новый образ при каждом запуске браузера</option>
+              <option value="daily" data-i18n="rotate_daily">Новый образ раз в день</option>
+            </select>
+          </label>
+        </div>
+        <div class="profile-controls">
+          <label class="fld"><span data-i18n="country">Страна</span>
+            <select id="country" class="mode" data-testid="country-select"></select>
+          </label>
+          <label class="fld"><span data-i18n="os">Система</span>
+            <select id="os" class="mode" data-testid="os-select">
+              <option value="win">Windows</option>
+              <option value="mac">macOS</option>
+              <option value="linux">Linux</option>
+            </select>
+          </label>
+        </div>
+      </div>
+
+      <div class="section-title" data-i18n="site">Этот сайт</div>
+      <div class="row">
+        <span data-i18n="site_toggle">Защита на этом сайте</span>
+        <label class="switch"><input type="checkbox" id="siteToggle" data-testid="toggle-site"><span class="slider"></span></label>
+      </div>
+      <div class="row">
+        <span data-i18n="forget_sites">Забывать сайты после закрытия</span>
+        <label class="switch"><input type="checkbox" id="forgetSites" data-testid="toggle-forget"><span class="slider"></span></label>
+      </div>
+
+      <div class="section-title" data-i18n="network">Блокировка сети</div>
+      <div class="row"><span data-i18n="block_ads">Реклама</span><label class="switch"><input type="checkbox" id="blockAds" data-testid="toggle-ads"><span class="slider"></span></label></div>
+      <div class="row"><span data-i18n="block_trackers">Трекеры</span><label class="switch"><input type="checkbox" id="blockTrackers" data-testid="toggle-trackers"><span class="slider"></span></label></div>
+      <div class="row"><span data-i18n="cosmetic">Скрывать рекламу</span><label class="switch"><input type="checkbox" id="cosmetic" data-testid="toggle-cosmetic"><span class="slider"></span></label></div>
+
+      <div class="section-title" data-i18n="privacy">Приватность</div>
+      <div class="row"><span data-i18n="https_upgrade">HTTPS</span><label class="switch"><input type="checkbox" id="httpsUpgrade" data-testid="toggle-https"><span class="slider"></span></label></div>
+      <div class="row"><span data-i18n="block_cookies3p">Cookies</span><label class="switch"><input type="checkbox" id="blockCookies3p" data-testid="toggle-cookies3p"><span class="slider"></span></label></div>
+      <div class="row"><span data-i18n="block_adtopics">Topics</span><label class="switch"><input type="checkbox" id="blockAdTopics" data-testid="toggle-adtopics"><span class="slider"></span></label></div>
+      <div class="row"><span data-i18n="clean_urls">URL</span><label class="switch"><input type="checkbox" id="cleanUrls" data-testid="toggle-clean-urls"><span class="slider"></span></label></div>
+      <div class="row"><span data-i18n="amp_redirect">AMP</span><label class="switch"><input type="checkbox" id="ampRedirect" data-testid="toggle-amp"><span class="slider"></span></label></div>
+      <div class="row"><span data-i18n="gpc">GPC</span><label class="switch"><input type="checkbox" id="gpc" data-testid="toggle-gpc"><span class="slider"></span></label></div>
+
+      <div class="section-title" data-i18n="protection_groups">Группы защиты</div>
+      <div class="groups" id="groups"></div>
+    </div>
+
+    <p class="note" data-i18n="note"></p>
+
+    <button id="openSettings" class="btn" data-testid="open-settings" data-i18n="open_settings">Открыть настройки</button>
+  </div>
+  <div id="toast" class="toast" data-testid="toast" role="alert"></div>
+  <script src="common.js"></script>
+  <script src="profiles.js"></script>
+  <script src="i18n.js"></script>
+  <script src="ui.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

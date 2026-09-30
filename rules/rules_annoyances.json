@@ -1,0 +1,876 @@
+[
+  {
+    "id": 1,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "urlFilter": "cookielaw.org",
+      "resourceTypes": [
+        "script",
+        "image",
+        "xmlhttprequest",
+        "sub_frame",
+        "stylesheet",
+        "object",
+        "ping",
+        "media",
+        "websocket",
+        "font",
+        "other"
+      ]
+    }
+  },
+  {
+    "id": 2,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "urlFilter": "cookiepro.com",
+      "resourceTypes": [
+        "script",
+        "image",
+        "xmlhttprequest",
+        "sub_frame",
+        "stylesheet",
+        "object",
+        "ping",
+        "media",
+        "websocket",
+        "font",
+        "other"
+      ]
+    }
+  },
+  {
+    "id": 3,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "urlFilter": "cookiebot.com",
+      "resourceTypes": [
+        "script",
+        "image",
+        "xmlhttprequest",
+        "sub_frame",
+        "stylesheet",
+        "object",
+        "ping",
+        "media",
+        "websocket",
+        "font",
+        "other"
+      ]
+    }
+  },
+  {
+    "id": 4,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "urlFilter": "consentmanager.net",
+      "resourceTypes": [
+        "script",
+        "image",
+        "xmlhttprequest",
+        "sub_frame",
+        "stylesheet",
+        "object",
+        "ping",
+        "media",
+        "websocket",
+        "font",
+        "other"
+      ]
+    }
+  },
+  {
+    "id": 5,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "urlFilter": "consensu.org",
+      "resourceTypes": [
+        "script",
+        "image",
+        "xmlhttprequest",
+        "sub_frame",
+        "stylesheet",
+        "object",
+        "ping",
+        "media",
+        "websocket",
+        "font",
+        "other"
+      ]
+    }
+  },
+  {
+    "id": 6,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "urlFilter": "didomi.io",
+      "resourceTypes": [
+        "script",
+        "image",
+        "xmlhttprequest",
+        "sub_frame",
+        "stylesheet",
+        "object",
+        "ping",
+        "media",
+        "websocket",
+        "font",
+        "other"
+      ]
+    }
+  },
+  {
+    "id": 7,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "urlFilter": "privacy-center.org",
+      "resourceTypes": [
+        "script",
+        "image",
+        "xmlhttprequest",
+        "sub_frame",
+        "stylesheet",
+        "object",
+        "ping",
+        "media",
+        "websocket",
+        "font",
+        "other"
+      ]
+    }
+  },
+  {
+    "id": 8,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "urlFilter": "iubenda.com",
+      "resourceTypes": [
+        "script",
+        "image",
+        "xmlhttprequest",
+        "sub_frame",
+        "stylesheet",
+        "object",
+        "ping",
+        "media",
+        "websocket",
+        "font",
+        "other"
+      ]
+    }
+  },
+  {
+    "id": 9,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "urlFilter": "trustarc.com",
+      "resourceTypes": [
+        "script",
+        "image",
+        "xmlhttprequest",
+        "sub_frame",
+        "stylesheet",
+        "object",
+        "ping",
+        "media",
+        "websocket",
+        "font",
+        "other"
+      ]
+    }
+  },
+  {
+    "id": 10,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "urlFilter": "usercentrics.eu",
+      "resourceTypes": [
+        "script",
+        "image",
+        "xmlhttprequest",
+        "sub_frame",
+        "stylesheet",
+        "object",
+        "ping",
+        "media",
+        "websocket",
+        "font",
+        "other"
+      ]
+    }
+  },
+  {
+    "id": 11,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "urlFilter": "osano.com",
+      "resourceTypes": [
+        "script",
+        "image",
+        "xmlhttprequest",
+        "sub_frame",
+        "stylesheet",
+        "object",
+        "ping",
+        "media",
+        "websocket",
+        "font",
+        "other"
+      ]
+    }
+  },
+  {
+    "id": 12,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "urlFilter": "termly.io",
+      "resourceTypes": [
+        "script",
+        "image",
+        "xmlhttprequest",
+        "sub_frame",
+        "stylesheet",
+        "object",
+        "ping",
+        "media",
+        "websocket",
+        "font",
+        "other"
+      ]
+    }
+  },
+  {
+    "id": 13,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "urlFilter": "onetrust.com",
+      "resourceTypes": [
+        "script",
+        "image",
+        "xmlhttprequest",
+        "sub_frame",
+        "stylesheet",
+        "object",
+        "ping",
+        "media",
+        "websocket",
+        "font",
+        "other"
+      ]
+    }
+  },
+  {
+    "id": 14,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "urlFilter": "cookieinformation.com",
+      "resourceTypes": [
+        "script",
+        "image",
+        "xmlhttprequest",
+        "sub_frame",
+        "stylesheet",
+        "object",
+        "ping",
+        "media",
+        "websocket",
+        "font",
+        "other"
+      ]
+    }
+  },
+  {
+    "id": 15,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "urlFilter": "consentframework.com",
+      "resourceTypes": [
+        "script",
+        "image",
+        "xmlhttprequest",
+        "sub_frame",
+        "stylesheet",
+        "object",
+        "ping",
+        "media",
+        "websocket",
+        "font",
+        "other"
+      ]
+    }
+  },
+  {
+    "id": 16,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "urlFilter": "sirdata.io",
+      "resourceTypes": [
+        "script",
+        "image",
+        "xmlhttprequest",
+        "sub_frame",
+        "stylesheet",
+        "object",
+        "ping",
+        "media",
+        "websocket",
+        "font",
+        "other"
+      ]
+    }
+  },
+  {
+    "id": 17,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "urlFilter": "commander1.com",
+      "resourceTypes": [
+        "script",
+        "image",
+        "xmlhttprequest",
+        "sub_frame",
+        "stylesheet",
+        "object",
+        "ping",
+        "media",
+        "websocket",
+        "font",
+        "other"
+      ]
+    }
+  },
+  {
+    "id": 18,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "urlFilter": "axept.io",
+      "resourceTypes": [
+        "script",
+        "image",
+        "xmlhttprequest",
+        "sub_frame",
+        "stylesheet",
+        "object",
+        "ping",
+        "media",
+        "websocket",
+        "font",
+        "other"
+      ]
+    }
+  },
+  {
+    "id": 19,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "urlFilter": "tarteaucitron.io",
+      "resourceTypes": [
+        "script",
+        "image",
+        "xmlhttprequest",
+        "sub_frame",
+        "stylesheet",
+        "object",
+        "ping",
+        "media",
+        "websocket",
+        "font",
+        "other"
+      ]
+    }
+  },
+  {
+    "id": 20,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "urlFilter": "klaro.kiprotect.com",
+      "resourceTypes": [
+        "script",
+        "image",
+        "xmlhttprequest",
+        "sub_frame",
+        "stylesheet",
+        "object",
+        "ping",
+        "media",
+        "websocket",
+        "font",
+        "other"
+      ]
+    }
+  },
+  {
+    "id": 21,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "urlFilter": "onesignal.com",
+      "resourceTypes": [
+        "script",
+        "image",
+        "xmlhttprequest",
+        "sub_frame",
+        "stylesheet",
+        "object",
+        "ping",
+        "media",
+        "websocket",
+        "font",
+        "other"
+      ]
+    }
+  },
+  {
+    "id": 22,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "urlFilter": "pushengage.com",
+      "resourceTypes": [
+        "script",
+        "image",
+        "xmlhttprequest",
+        "sub_frame",
+        "stylesheet",
+        "object",
+        "ping",
+        "media",
+        "websocket",
+        "font",
+        "other"
+      ]
+    }
+  },
+  {
+    "id": 23,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "urlFilter": "pushalert.co",
+      "resourceTypes": [
+        "script",
+        "image",
+        "xmlhttprequest",
+        "sub_frame",
+        "stylesheet",
+        "object",
+        "ping",
+        "media",
+        "websocket",
+        "font",
+        "other"
+      ]
+    }
+  },
+  {
+    "id": 24,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "urlFilter": "pushwoosh.com",
+      "resourceTypes": [
+        "script",
+        "image",
+        "xmlhttprequest",
+        "sub_frame",
+        "stylesheet",
+        "object",
+        "ping",
+        "media",
+        "websocket",
+        "font",
+        "other"
+      ]
+    }
+  },
+  {
+    "id": 25,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "urlFilter": "webpushr.com",
+      "resourceTypes": [
+        "script",
+        "image",
+        "xmlhttprequest",
+        "sub_frame",
+        "stylesheet",
+        "object",
+        "ping",
+        "media",
+        "websocket",
+        "font",
+        "other"
+      ]
+    }
+  },
+  {
+    "id": 26,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "urlFilter": "pushnami.com",
+      "resourceTypes": [
+        "script",
+        "image",
+        "xmlhttprequest",
+        "sub_frame",
+        "stylesheet",
+        "object",
+        "ping",
+        "media",
+        "websocket",
+        "font",
+        "other"
+      ]
+    }
+  },
+  {
+    "id": 27,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "urlFilter": "pushomate.com",
+      "resourceTypes": [
+        "script",
+        "image",
+        "xmlhttprequest",
+        "sub_frame",
+        "stylesheet",
+        "object",
+        "ping",
+        "media",
+        "websocket",
+        "font",
+        "other"
+      ]
+    }
+  },
+  {
+    "id": 28,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "urlFilter": "letreach.com",
+      "resourceTypes": [
+        "script",
+        "image",
+        "xmlhttprequest",
+        "sub_frame",
+        "stylesheet",
+        "object",
+        "ping",
+        "media",
+        "websocket",
+        "font",
+        "other"
+      ]
+    }
+  },
+  {
+    "id": 29,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "urlFilter": "optinmonster.com",
+      "resourceTypes": [
+        "script",
+        "image",
+        "xmlhttprequest",
+        "sub_frame",
+        "stylesheet",
+        "object",
+        "ping",
+        "media",
+        "websocket",
+        "font",
+        "other"
+      ]
+    }
+  },
+  {
+    "id": 30,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "urlFilter": "privy.com",
+      "resourceTypes": [
+        "script",
+        "image",
+        "xmlhttprequest",
+        "sub_frame",
+        "stylesheet",
+        "object",
+        "ping",
+        "media",
+        "websocket",
+        "font",
+        "other"
+      ]
+    }
+  },
+  {
+    "id": 31,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "urlFilter": "justuno.com",
+      "resourceTypes": [
+        "script",
+        "image",
+        "xmlhttprequest",
+        "sub_frame",
+        "stylesheet",
+        "object",
+        "ping",
+        "media",
+        "websocket",
+        "font",
+        "other"
+      ]
+    }
+  },
+  {
+    "id": 32,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "urlFilter": "wisepops.com",
+      "resourceTypes": [
+        "script",
+        "image",
+        "xmlhttprequest",
+        "sub_frame",
+        "stylesheet",
+        "object",
+        "ping",
+        "media",
+        "websocket",
+        "font",
+        "other"
+      ]
+    }
+  },
+  {
+    "id": 33,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "urlFilter": "sleeknote.com",
+      "resourceTypes": [
+        "script",
+        "image",
+        "xmlhttprequest",
+        "sub_frame",
+        "stylesheet",
+        "object",
+        "ping",
+        "media",
+        "websocket",
+        "font",
+        "other"
+      ]
+    }
+  },
+  {
+    "id": 34,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "urlFilter": "hellobar.com",
+      "resourceTypes": [
+        "script",
+        "image",
+        "xmlhttprequest",
+        "sub_frame",
+        "stylesheet",
+        "object",
+        "ping",
+        "media",
+        "websocket",
+        "font",
+        "other"
+      ]
+    }
+  },
+  {
+    "id": 35,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "urlFilter": "mailmunch.co",
+      "resourceTypes": [
+        "script",
+        "image",
+        "xmlhttprequest",
+        "sub_frame",
+        "stylesheet",
+        "object",
+        "ping",
+        "media",
+        "websocket",
+        "font",
+        "other"
+      ]
+    }
+  },
+  {
+    "id": 36,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "urlFilter": "getsitecontrol.com",
+      "resourceTypes": [
+        "script",
+        "image",
+        "xmlhttprequest",
+        "sub_frame",
+        "stylesheet",
+        "object",
+        "ping",
+        "media",
+        "websocket",
+        "font",
+        "other"
+      ]
+    }
+  },
+  {
+    "id": 37,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "urlFilter": "convertbox.com",
+      "resourceTypes": [
+        "script",
+        "image",
+        "xmlhttprequest",
+        "sub_frame",
+        "stylesheet",
+        "object",
+        "ping",
+        "media",
+        "websocket",
+        "font",
+        "other"
+      ]
+    }
+  },
+  {
+    "id": 38,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "urlFilter": "popt.in",
+      "resourceTypes": [
+        "script",
+        "image",
+        "xmlhttprequest",
+        "sub_frame",
+        "stylesheet",
+        "object",
+        "ping",
+        "media",
+        "websocket",
+        "font",
+        "other"
+      ]
+    }
+  }
+]

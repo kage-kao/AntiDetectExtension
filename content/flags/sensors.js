@@ -1,0 +1,1 @@
+(self.__ade_flags||(self.__ade_flags={})).sensors=1;

@@ -1,0 +1,103 @@
+{
+  "manifest_version": 3,
+  "name": "AntiDetectExtension — Anti-Fingerprint, Ad, Tracker & Analytics Blocker",
+  "version": "3.1.0",
+  "description": "Anti-fingerprint legend profiles + ad/tracker/analytics blocker, heuristic anti-tracking, cookie auto-delete, URL cleaner, consent auto-reject, HTTPS upgrade, 3rd-party cookie & Topics blocking.",
+  "minimum_chrome_version": "119",
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_title": "AntiDetectExtension",
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "options_page": "options.html",
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": [
+    "declarativeNetRequest",
+    "declarativeNetRequestFeedback",
+    "storage",
+    "tabs",
+    "scripting",
+    "webNavigation",
+    "browsingData",
+    "privacy",
+    "cookies",
+    "webRequest"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "shared/common.js",
+        "content/bridge.js"
+      ],
+      "run_at": "document_start",
+      "all_frames": true,
+      "match_about_blank": true,
+      "world": "ISOLATED"
+    },
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "shared/common.js",
+        "content/consent.js"
+      ],
+      "run_at": "document_idle",
+      "all_frames": true,
+      "world": "ISOLATED"
+    }
+  ],
+  "declarative_net_request": {
+    "rule_resources": [
+      {
+        "id": "ads",
+        "enabled": true,
+        "path": "rules/rules_ads.json"
+      },
+      {
+        "id": "trackers",
+        "enabled": true,
+        "path": "rules/rules_trackers.json"
+      },
+      {
+        "id": "analytics",
+        "enabled": true,
+        "path": "rules/rules_analytics.json"
+      },
+      {
+        "id": "annoyances",
+        "enabled": true,
+        "path": "rules/rules_annoyances.json"
+      },
+      {
+        "id": "social",
+        "enabled": true,
+        "path": "rules/rules_social.json"
+      },
+      {
+        "id": "security",
+        "enabled": true,
+        "path": "rules/rules_security.json"
+      }
+    ]
+  }
+}
